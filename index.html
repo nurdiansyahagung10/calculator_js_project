@@ -37,6 +37,34 @@
     .blinked {
         opacity: 5%;
     }
+
+::-webkit-scrollbar{
+    height: 3px !important;
+    width: 3px !important;
+}
+
+
+::-webkit-scrollbar-track {
+  background:  transparent;
+      height: 4px !important;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.text-muncul{
+      width: 100%;
+  background-color: transparent;
+  resize: none;
+  min-height: 25px;
+  height: auto;
+}
 </style>
 
 <body class="bg-light">
@@ -44,14 +72,14 @@
     <div class="container p-5">
         <div class=" rounded-3 shadow mx-auto " style=" width: auto; max-width: 400px;  background: #3A4655;">
             <div class="p-3">
-                <div style="height: 50px; border-bottom:  dashed 1px lightgray;"
-                    class="d-flex align-items-center gap-2 text-light type_math">
+                <div style="min-height: 35px; height: auto; border-bottom:  dashed 1px lightgray;"
+                    class="d-flex align-items-center flex-nowrap  gap-2 text-light type_math overflow-x-auto overflow-y-hidden">
                 </div>
                 <div style="height: 25px;">
                     <span class="text-white small type_alert"></span>
                 </div>
-                <div style="height: 50px; " class="fs-1 py-2 text-end overflow-x-auto overflow-y-hidden"><span
-                        class="text-white type_num"></span><span id="blink" style="color: #E0B612;">|</span></div>
+                <div style=" word-wrap: break-word; text-align:  right;" class=" py-1 p-0 pb-0 h5  text-muncul"><span
+                        class="text-white type_num "  ></span><span id="blink" style="color: #E0B612;">|</span></div>
             </div>
             <table class="table table-dark mb-0 overflow-hidden" style="border-collapse: separate;">
                 <tbody>
@@ -64,7 +92,8 @@
                                 class="d-block text-white text-decoration-none" data-bs-toggle="offcanvas"
                                 href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i
                                     class="fi fi-ss-apps"></i></a></td>
-                        <td class=" col-3 h4 p-3 pt-4 text-center bs s-switch d-none">π</td>
+                                                            <td class=" col-3 h4 p-3 pt-4 text-center bs  s-switch b-sim d-none">^</td>
+
                     </tr>
                     <tr>
                         <td class=" col-3 h4 p-3 pt-4 text-center ba">7</td>
@@ -94,7 +123,8 @@
                         <td class=" col-3 h4 p-3 pt-4 text-center ba d-none">²</td>
                         <td class=" col-3 h4 p-3 pt-4 text-center ba d-none">¹</td>
                         <td class=" col-3 h4 p-3 pt-4 text-center bs bli s-switch ">X</td>
-                        <td class=" col-3 h4 p-3 pt-4 text-center bs  s-switch b-sim d-none">^</td>
+                                                <td class=" col-3 h4 p-3 pt-4 text-center bs s-switch d-none">π</td>
+
                     </tr>
                     <tr>
                         <td class=" col-3 h4 p-3 pt-4 text-center bt">.</td>
@@ -694,7 +724,6 @@
                             let hasil = eval(sigfixi / n);
                             type_num.textContent = hasil;
                             type_alert.innerHTML = "nilai mean nya adalah";
-                            rumusmean.textContent = rumusmean.textContent + ' = ' + hasil;
 
 
                         } else {
@@ -854,7 +883,6 @@
                             let hasil = eval(sigfixi / n);
                             type_num.textContent = hasil;
                             type_alert.innerHTML = "nilai mean nya adalah";
-                            rumusmean.textContent = rumusmean.textContent + ' = ' + hasil;
                             n.textContent = nn;
 
                         }
@@ -869,7 +897,6 @@
                             let hasil = eval(sigfixi / n);
                             type_num.textContent = hasil;
                             type_alert.innerHTML = "nilai mean nya adalah";
-                            rumusmean.textContent = rumusmean.textContent + ' = ' + hasil;
                             n.textContent = nn;
 
                         } else {
@@ -878,7 +905,6 @@
                             let hasil = eval(sigfixi.textContent / nn);
                             type_num.textContent = hasil;
                             type_alert.innerHTML = "nilai mean nya adalah";
-                            rumusmean.textContent = rumusmean.textContent + ' = ' + hasil;
                             n.textContent = nn;
 
                         }
@@ -1221,8 +1247,8 @@
         });
 
         bmeanT.addEventListener('click', function () {
-            type_math.innerHTML = "<span > x̅ = </span><div class='d-flex flex-column align-items-center'><span class='border-bottom border-2 sigfixi'>Σ (xi or xt).fi</span><span class='n'>n</span></div> <span class='rumusmean'></span>";
-            type_alert.innerHTML = "masukan nilai untuk Σ xi.fi";
+            type_math.innerHTML = "<span > x̅ = </span><div class='d-flex flex-column align-items-center'><span class='border-bottom border-2 sigfixi'>Σ (xi or xt).fi</span><span class='n'>n</span></div> <span class='rumusmean d-flex flex-nowrap'></span>";
+            type_alert.innerHTML = "masukan nilai untuk Σ (xi or xt).fi";
             type_num.innerHTML = "";
             bhasil.classList.add('bhasilmean');
         })
@@ -1305,8 +1331,8 @@
 
         button_delete.addEventListener('click', function () {
             if (bhasil.classList.contains('bhasilmean')) {
-                type_math.innerHTML = "<span > x̅ = </span><div class='d-flex flex-column align-items-center'><span class='border-bottom border-2 sigfixi'>Σ (xi or xt).fi</span><span class='n'>n</span></div> <span class='rumusmean'></span>";
-                type_alert.innerHTML = "masukan nilai untuk Σ xi.fi";
+                type_math.innerHTML = "<span > x̅ = </span><div class='d-flex flex-column align-items-center'><span class='border-bottom border-2 sigfixi'>Σ (xi or xt).fi</span><span class='n'>n</span></div> <span class='rumusmean d-flex flex-nowrap'></span>";
+                type_alert.innerHTML = "masukan nilai untuk Σ (xi or xt).fi";
                 type_num.innerHTML = "";
             } else {
                 type_num.textContent = '';
@@ -1324,6 +1350,10 @@
             element.addEventListener('click', function () {
                 let grow = type_num.textContent;
                 const value_button = element.textContent;
+                if (grow.length >= 50) {
+                    
+                }else{
+
                 if (value_button == '⁰' || value_button == '¹' || value_button == '²' || value_button == '³' || value_button == '⁴' || value_button == '⁵' || value_button == '⁶' || value_button == '⁷' || value_button == '⁸' || value_button == '⁹') {
                     if (grow.slice(-1) == '+' || grow.slice(-1) == '-' || grow.slice(-1) == ':' || grow.slice(-1) == 'X' || grow == '') {
                         type_num.textContent += ' 0' + value_button;
@@ -1340,6 +1370,8 @@
                 else {
                     type_num.textContent += value_button;
                 }
+                                }
+
             });
         });
 
