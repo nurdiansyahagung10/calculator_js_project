@@ -1,0 +1,1 @@
+1. pastikan agar function akumulasi ada di urutan paling bawah penggunaannya
