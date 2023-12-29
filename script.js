@@ -186,6 +186,8 @@ bmean.addEventListener('click', function () {
     type_math.innerHTML = "<span > x̅ = </span><div class='d-flex flex-column align-items-center'><span class='border-bottom border-2 sigfixi'>Σ (xi or xt).fi</span><span class='n'>n</span></div> <span class='rumusmean d-flex flex-nowrap'></span>";
     type_alert.innerHTML = "masukan nilai untuk Σ (xi or xt).fi";
     type_num.innerHTML = "";
+    type_alerttwo.innerHTML = "untuk menginput nilai bisa menggunakan symbol  ' = ' ";
+    toastLiveExample.classList.add('show');    
     bhasil.classList.remove('bhasilMedianT');
     bhasil.classList.add('bhasilmean');
     button_titik.classList.remove('d-none');
@@ -196,7 +198,7 @@ bmedianT.addEventListener('click', function () {
     type_math.innerHTML = ` <span> Me = <span class="x">X</span></span><br>`;
     type_alert.innerHTML = "masukan nilai dengan pemisah ' , ' ";
     type_num.innerHTML = "";
-    type_alerttwo.innerHTML = "rumus akan muncul ketika nilai sudah di inputkan tergantung ganjil genapnya, symbol X di sini akan menandakan frekuensi contoh tabel nilai :  15 orang memiliki nilai 6  maka anda tidak usah mengetikan 15,15,15 anda bisa mengetikan 15 X 6  ";
+    type_alerttwo.innerHTML = "untuk menginput nilai bisa menggunakan symbol  ' = ' ,rumus akan muncul ketika nilai sudah di inputkan tergantung ganjil genapnya, symbol X di sini akan menandakan frekuensi contoh tabel nilai :  15 orang memiliki nilai 6  maka anda tidak usah mengetikan 15,15,15 anda bisa mengetikan 15 X 6  ";
     toastLiveExample.classList.add('show');
     bhasil.classList.add('bhasilMedianT');
     bhasil.classList.remove('bhasilmean');
@@ -230,24 +232,7 @@ button_koma.addEventListener('click', function () {
 });
 
 button_titik.addEventListener('click', function () {
-    let grow = type_num.textContent;
-    let growt = grow.length;
-    let argrow = grow.split(' ');
-    if (/[1-9]/.test(argrow[argrow.length - 2]) && argrow[argrow.length - 1] == '') {
-        type_num.textContent = grow + '+ 0' + '.';
-    }
-    else if (argrow[argrow.length - 1].includes('.')) {
-    }
-    else if (growt == 0) {
-        type_num.textContent = grow + '0' + '.';
-    }
-    else if (grow.slice(-1) == '+' || grow.slice(-1) == '-' || grow.slice(-1) == ':' || grow.slice(-1) == 'X' || grow.slice(-1) == ' ') {
-        type_num.textContent = grow + ' 0' + '.';
-    }
-    else {
-
-        type_num.textContent = grow + '.';
-    }
+    type_num.textContent = library.TombolTitik(type_num);
 });
 
 button_delete.addEventListener('click', function () {

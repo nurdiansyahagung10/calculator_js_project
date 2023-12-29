@@ -198,7 +198,7 @@ window.library = (function () {
 
     function TambahZeroDbol(grow) {
         grow = grow.trim();
-        if (grow.slice(-1) == '+' || grow.slice(-1) == '-' || grow.slice(-1) == ':' || grow.slice(-1) == 'X' || grow.slice(-1) == '/' || grow.slice(-1) == '*') {
+        if (grow.slice(-1) == '+' || grow.slice(-1) == '-' || grow.slice(-1) == ':' || grow.slice(-1) == 'X' || grow.slice(-1) == '/' || grow.slice(-1) == '*' ) {
             grow = grow += ' 0';
         }
         return (grow);
@@ -235,14 +235,40 @@ window.library = (function () {
         else if (grow.slice(-2) == '+ ' || grow.slice(-2) == '- ' || grow.slice(-2) == ': ' || grow.slice(-2) == 'X ') {
             return grow.slice(0, -2) + '+';
         }
-        else if (grow.slice(-1) == ',' || grow.slice(-1) == '.') {
+        else if (grow.slice(-1) == ',') {
             return grow + ' 0' + ' +';
+        }
+        else if (grow.slice(-1) == '.') {
+            return grow + '0' + ' +';
+
         }
         else if (growt == 0) {
             return '0' + ' +';
         }
         else {
             return grow + ' +';
+        }
+    }
+
+    function TombolTitik(grow) {
+        grow = grow.textContent;
+        let growt = grow.length;
+        let argrow = grow.split(' ');
+        if (/[1-9]/.test(argrow[argrow.length - 2]) && argrow[argrow.length - 1] == '') {
+            return grow + '+ 0' + '.';
+        }
+        else if (argrow[argrow.length - 1].includes('.')) {
+            return grow;
+        }
+        else if (growt == 0) {
+            return grow + '0' + '.';
+        }
+        else if (grow.slice(-1) == '+' || grow.slice(-1) == '-' || grow.slice(-1) == ':' || grow.slice(-1) == 'X' || grow.slice(-1) == ' ') {
+            return grow + ' 0' + '.';
+        }
+        else {
+
+            return grow + '.';
         }
     }
 
@@ -266,8 +292,12 @@ window.library = (function () {
         else if (grow.slice(-2) == '+ ' || grow.slice(-2) == '- ' || grow.slice(-2) == ': ' || grow.slice(-2) == 'X ') {
             return grow.slice(0, -2) + 'X';
         }
-        else if (grow.slice(-1) == ',' || grow.slice(-1) == '.') {
+        else if (grow.slice(-1) == ',') {
             return grow + ' 0' + ' X';
+        }
+        else if (grow.slice(-1) == '.') {
+            return grow + '0' + ' X';
+
         }
         else if (growt == 0) {
             return '0' + ' X';
@@ -297,8 +327,12 @@ window.library = (function () {
         else if (grow.slice(-2) == '+ ' || grow.slice(-2) == '- ' || grow.slice(-2) == ': ' || grow.slice(-2) == 'X ') {
             return grow.slice(0, -2) + ':';
         }
-        else if (grow.slice(-1) == ',' || grow.slice(-1) == '.') {
+        else if (grow.slice(-1) == ',') {
             return grow + ' 0' + ' :';
+        }
+        else if (grow.slice(-1) == '.') {
+            return grow + '0' + ' :';
+
         }
         else if (growt == 0) {
             return '0' + ' :';
@@ -311,7 +345,7 @@ window.library = (function () {
     function TombolKoma(grow) {
         grow = grow.textContent;
         let growt = grow.length;
-         
+
         if (grow.slice(-3) == '- -') {
             return grow.slice(0, -3) + ',';
         }
@@ -327,7 +361,7 @@ window.library = (function () {
         else if (grow.slice(-2) == '+ ' || grow.slice(-2) == '- ' || grow.slice(-2) == ': ' || grow.slice(-2) == 'X ') {
             return grow.slice(0, -2) + ',';
         }
-        else if (grow.slice(-1) == ',' || grow.slice(-1) == '.') {
+        else if ( grow.slice(-1) == '.') {
             return grow + ' 0' + ' ,';
         }
         else if (growt == 0) {
@@ -353,8 +387,12 @@ window.library = (function () {
         } else if (grow.slice(-2) == '- ' || grow.slice(-2) == ': ' || grow.slice(-2) == 'X ') {
             return grow.slice(0, -2) + '-';
         }
-        else if (grow.slice(-1) == ',' || grow.slice(-1) == '.') {
+        else if (grow.slice(-1) == ',') {
             return grow + ' 0' + ' -';
+        }
+        else if (grow.slice(-1) == '.') {
+            return grow + '0' + ' -';
+
         }
         else {
             return grow + ' -';
@@ -402,6 +440,7 @@ window.library = (function () {
     return {
         TombolPlus: TombolPlus,
         TombolKoma: TombolKoma,
+        TombolTitik: TombolTitik,
         TombolAngka: TombolAngka,
         TombolBackSpace: TombolBackSpace,
         TombolBagi: TombolBagi,
