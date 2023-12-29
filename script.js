@@ -117,7 +117,8 @@ bhasil.addEventListener('click', function () {
             nxtwo = document.querySelector('.nxtwo');
             nxone.innerHTML = meone;
             nxtwo.innerHTML = metwo;
-            let med = (meone + metwo)/2;
+            let med = (Number(meone) + Number(metwo))/2;
+            console.log(med);
             type_alert.innerHTML = "nilai mediannya adalah ";
             type_num.innerHTML = med;
 
